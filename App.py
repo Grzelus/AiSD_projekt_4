@@ -11,7 +11,16 @@ def from_file(filename):
 def graph_nm_from_file(filename):
     lines=from_file(filename)
     return createNeighbourhoodMatrix(lines)
-
+#jeszcze nie działa
+def Keyboard():
+    List=[]
+    x=input()
+    List.append([x])
+    for x in range(int(x[2])):
+        x=input()
+        List.append([x])   
+    return List     
+    
 
 print("wybierz format grafu:\n")
 print("1) macierz sąsiedztwa\n")
@@ -20,8 +29,15 @@ print("2) macierz następników\n")
 format = int(input())
 
 if format == 1:
-    file = input("wczytaj graf z pliku: ")
-    [graph,Vertices] = graph_nm_from_file(file)
+    print("1) wpisz z pliku\n")
+    print("2) z klawiatury\n")
+    choice=int(input("Wybierz opcje: "))
+    if choice==1:
+        file = input("wczytaj graf z pliku: ")
+        [graph,Vertices] = graph_nm_from_file(file)
+    else:
+        List=Keyboard()
+        createNeighbourhoodMatrix(List)
     print("wybór algorytmu:\n")
     print("1) Flores\n")
     print("2) Fleury\n")
