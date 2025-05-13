@@ -39,5 +39,5 @@ def find_euler_cycle_aeg(M: pd.DataFrame) -> List[int]:
             stack.append(u)
         else:
             path.append(stack.pop())
-
+    path = [int(v) for v in path]
     return path[::-1]
