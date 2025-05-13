@@ -8,16 +8,6 @@ def from_file(filename):
         lines = f.readlines()
     return lines
 
-##nie wiem czy to sie przyda do macierzy ale póki co zostawiam
-def graph_al_from_file(filename):
-    lines=from_file(filename)
-    num_vertices, num_edges = map(int, lines[0].split())
-
-    for line in lines[1:]:
-        u, v = map(int, line.split())
-        graph.add_edge(u, v)
-    return graph
-
 def graph_nm_from_file(filename):
     lines=from_file(filename)
     return createNeighbourhoodMatrix(lines)
@@ -48,16 +38,19 @@ if format == 1:
 ## zostawiłem tylko szkielet żeby dopisać twoje funkcje
 elif format == 2:
     file = input("wczytaj graf z pliku: ")
-    graph = graph_al_from_file(file)
+    #graph = tworzenie grafu
     print("wybór algorytmu:\n")
     print("1) Flores\n")
     print("2) Fleury\n")
     alg = int(input())
     if alg == 1:
         start = time.time()
+        #CyclePath= 
         end = time.time()
     elif alg == 2:
         start = time.time()
+        #CyclePath=
         end = time.time()
-        
+if CyclePath:
+    print(CyclePath)
 print(f"Czas wykonania algorytmu: {start-end}")
