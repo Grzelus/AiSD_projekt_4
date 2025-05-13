@@ -159,4 +159,5 @@ def find_euler_cycle_aeg(M: pd.DataFrame) -> List[int]:
 
     return path[::-1]
 
+print(find_euler_cycle_aeg(M))
 print(find_hamilton_cycle_ahg(M))
