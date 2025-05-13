@@ -1,42 +1,58 @@
-def count_components(Graph,v):
-    n = len(Graph)
-    visited = [False] * n
+import copy
+def countVertices(GraphCopy,v):
+    n = len(GraphCopy)
+    visited = [False] * (n+1)
 
     def dfs_count(v):
         visited[v] = True
         count = 1
-        for u in range(n):
-            if Graph[v][u] and not visited[u]:
+        print(v)
+        for u in range(1,n):
+            if GraphCopy[v][u]==1 and not visited[u]:
                 count += dfs_count(u)
         return count
 
     count = dfs_count(v)
     return count
-def check_bridge(Graph, indexA,indexB):
-    withBridge=count_components(Graph, indexA)
-    Graph[indexA][indexB]=0
-    Graph[indexB][indexA]=0
-    withoutBridge=count_components(Graph, indexA)
-    Graph[indexA][indexB]=1
-    Graph[indexB][indexA]=1
-    return withoutBridge>withBridge
 
-def checkVerticeDegree(Graph, Vertice):
-    i=Graph[Vertice].count(1)
+def check_bridge(GraphCopy, indexA,indexB):
+    GraphCopy[indexA][indexB]=0
+    GraphCopy[indexB][indexA]=0
+    withoutBridge=countVertices(GraphCopy, indexB)
+    GraphCopy[indexA][indexB]=1
+    GraphCopy[indexB][indexA]=1
+    withBridge=countVertices(GraphCopy, indexB)
+   # print(f"{withBridge}, {withoutBridge}")
+    return withoutBridge <withBridge
+
+def checkVerticeDegree(Graphcopy, Vertice):
+    i=Graphcopy[Vertice].count(1)
     return i
 
-def allEdgesUsed(G):
-    return all(G[i][j] == 0 for i in range(len(G)) for j in range(i, len(G)))
-
+def allEdgesUsed(G,n):
+    Zeros=[[0 for _ in range(n+1)] for _ in range(n+1)]
+    #print(Zeros)
+    if Zeros==G:   
+        return True
+    return False
 def FleuryAlgorithm(Graph, Vertices, V):
     amountOfVertices = len(Vertices)
     GraphCopy = copy.deepcopy(Graph)
     cyclePath=[]
     def ECycle(startingPoint, actual):
-        print(cyclePath)
         cyclePath.append(actual)
-        if allEdgesUsed(GraphCopy) and actual == startingPoint:
+
+        if startingPoint==1 and len(cyclePath)<=7:
+            print(cyclePath)
+            printGraph(GraphCopy)
+            print(checkVerticeDegree(GraphCopy,actual))
+
+        if allEdgesUsed(GraphCopy,amountOfVertices) and actual == startingPoint:
             return True
+        
+        if checkVerticeDegree(GraphCopy, actual)==0:
+            return False
+        
         for i in Vertices:
             if GraphCopy[actual][i] == 1:
                 if check_bridge(GraphCopy, actual, i) and checkVerticeDegree(GraphCopy, actual) > 1:
@@ -47,9 +63,9 @@ def FleuryAlgorithm(Graph, Vertices, V):
 
                 if ECycle(startingPoint, i):
                     return True
-
-                GraphCopy[actual][i] = 1
-                GraphCopy[i][actual] = 1
+                else: 
+                    GraphCopy[actual][i] = 1
+                    GraphCopy[i][actual] = 1
 
 
 
