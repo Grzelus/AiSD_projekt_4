@@ -38,6 +38,7 @@ def find_hamilton_cycle_ahg(M: pd.DataFrame) -> Optional[List[int]]:
         visited = [False] * (n + 1)
         if dfs(start, 1):
             path.append(start)
+            path = [int(v) for v in path]
             return path
 
     return None

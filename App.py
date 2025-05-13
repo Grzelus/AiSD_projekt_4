@@ -41,18 +41,18 @@ if format == 1:
 ## zostawiłem tylko szkielet żeby dopisać twoje funkcje
 elif format == 2:
     file = input("wczytaj graf z pliku: ")
-    #graph = tworzenie grafu
+    graph = turn_into_mm(file)
     print("wybór algorytmu:\n")
     print("1) Flores\n")
     print("2) Fleury\n")
     alg = int(input())
     if alg == 1:
         start = time.time()
-        #CyclePath= 
+        CyclePath = find_hamilton_cycle_ahg(graph)
         end = time.time()
     elif alg == 2:
         start = time.time()
-        #CyclePath=
+        CyclePath= find_euler_cycle_aeg(graph)
         end = time.time()
 if CyclePath:
     print(CyclePath)
