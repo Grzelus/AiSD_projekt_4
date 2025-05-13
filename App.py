@@ -1,6 +1,9 @@
 from robertflores_nm import RobertFloresAlgorithm
 from fleury_nm import FleuryAlgorithm
 from create_nm import createNeighbourhoodMatrix
+from create_mm import turn_into_mm
+from fleury_mm import find_euler_cycle_aeg
+from robertflores_mm import find_hamilton_cycle_ahg
 import time
 
 def from_file(filename):
