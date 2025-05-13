@@ -1,4 +1,9 @@
 import copy
+
+def printGraph(Tab):
+    for i in Tab:
+        print(i)
+        
 def countVertices(GraphCopy,v):
     n = len(GraphCopy)
     visited = [False] * (n+1)
@@ -35,7 +40,7 @@ def allEdgesUsed(G,n):
     if Zeros==G:   
         return True
     return False
-def FleuryAlgorithm(Graph, Vertices, V):
+def FleuryAlgorithm(Graph, Vertices):
     amountOfVertices = len(Vertices)
     GraphCopy = copy.deepcopy(Graph)
     cyclePath=[]
