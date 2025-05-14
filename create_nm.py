@@ -14,7 +14,7 @@ def createNeighbourhoodMatrix(Tab):
         a,b=map(int,Tab[i].split())
         if(a<=A and b<=A):
             Graph[a][b]=1 
-            Graph[b][a]=-1
+            Graph[b][a]=1
         else:
             print(f"Out of range {a} and {b}")
 

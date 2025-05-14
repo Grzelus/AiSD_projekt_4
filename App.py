@@ -16,14 +16,16 @@ def graph_nm_from_file(filename):
     return createNeighbourhoodMatrix(lines)
 #jeszcze nie działa
 def Keyboard():
-    List=[]
-    x=input()
-    List.append([x])
-    for x in range(int(x[2])):
-        x=input()
-        List.append([x])   
-    return List     
-    
+    List = []
+    first_line = input()
+    List.append(first_line) 
+    n = int(first_line.split()[1])  
+
+    for _ in range(n):
+        x = input()
+        List.append(x)  # dodaj każdą kolejną linię jako string
+
+    return List
 
 print("wybierz format grafu:\n")
 print("1) macierz sąsiedztwa\n")
@@ -40,7 +42,7 @@ if format == 1:
         [graph,Vertices] = graph_nm_from_file(file)
     else:
         List=Keyboard()
-        createNeighbourhoodMatrix(List)
+        [graph,Vertices] = createNeighbourhoodMatrix(List)
     print("wybór algorytmu:\n")
     print("1) Flores\n")
     print("2) Fleury\n")
