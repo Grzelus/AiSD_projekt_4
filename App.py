@@ -53,8 +53,6 @@ if format == 1:
         start = time.time()
         CyclePath=FleuryAlgorithm(graph,Vertices)
         end = time.time()
-
-## zostawiłem tylko szkielet żeby dopisać twoje funkcje
 elif format == 2:
     file = input("wczytaj graf z pliku: ")
     graph = turn_into_mm(file)
