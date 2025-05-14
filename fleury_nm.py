@@ -11,7 +11,7 @@ def countVertices(GraphCopy,v):
     def dfs_count(v):
         visited[v] = True
         count = 1
-        print(v)
+        #print(v)
         for u in range(1,n):
             if GraphCopy[v][u]==1 and not visited[u]:
                 count += dfs_count(u)
@@ -47,10 +47,10 @@ def FleuryAlgorithm(Graph, Vertices):
     def ECycle(startingPoint, actual):
         cyclePath.append(actual)
 
-        if startingPoint==1 and len(cyclePath)<=7:
-            print(cyclePath)
-            printGraph(GraphCopy)
-            print(checkVerticeDegree(GraphCopy,actual))
+        #if startingPoint==1 and len(cyclePath)<=7:
+            #print(cyclePath)
+           # printGraph(GraphCopy)
+           # print(checkVerticeDegree(GraphCopy,actual))
 
         if allEdgesUsed(GraphCopy,amountOfVertices) and actual == startingPoint:
             return True
@@ -79,7 +79,6 @@ def FleuryAlgorithm(Graph, Vertices):
     for _ in Vertices:
         cyclePath=[]
         if ECycle(_,_):
-            print("Jest obwód Eulera")
+            print("Jest cykl Eulera")
             return cyclePath
-    print("Obwód nie istnieje")
     return None
