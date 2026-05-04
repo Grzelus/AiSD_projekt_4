@@ -23,7 +23,7 @@ def Keyboard():
 
     for _ in range(n):
         x = input()
-        List.append(x)  # dodaj każdą kolejną linię jako string
+        List.append(x) 
 
     return List
 
@@ -56,6 +56,9 @@ if format == 1:
         CyclePath=FleuryAlgorithm(graph,Vertices)
         end = time.time()
 elif format == 2:
+    print("1) wpisz z pliku\n")
+    print("2) z klawiatury\n")
+    choice=int(input("Wybierz opcje: "))
     file = input("wczytaj graf z pliku: ")
     graph = turn_into_mm(file)
     print("wybór algorytmu:\n")
